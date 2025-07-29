@@ -1,0 +1,7 @@
+{
+  "name": "api-gateway",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "docker build -t krakend-gateway --no-cache . && docker run --name gateway -p 8080:8080 krakend-gateway"
+  }
+}
