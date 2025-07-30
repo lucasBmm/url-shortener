@@ -108,15 +108,36 @@ importers:
       '@nestjs/common':
         specifier: ^10.0.0
         version: 10.4.15(class-transformer@0.5.1)(class-validator@0.14.2)(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/config':
+        specifier: ^4.0.2
+        version: 4.0.2(@nestjs/common@10.4.15)(rxjs@7.8.2)
       '@nestjs/core':
         specifier: ^10.0.0
         version: 10.3.8(@nestjs/common@10.4.15)(@nestjs/platform-express@10.3.8)(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/jwt':
+        specifier: ^11.0.0
+        version: 11.0.0(@nestjs/common@10.4.15)
+      '@nestjs/mapped-types':
+        specifier: '*'
+        version: 2.0.5(@nestjs/common@10.4.15)(class-transformer@0.5.1)(class-validator@0.14.2)(reflect-metadata@0.2.2)
+      '@nestjs/passport':
+        specifier: ^11.0.5
+        version: 11.0.5(@nestjs/common@10.4.15)(passport@0.7.0)
       '@nestjs/platform-express':
         specifier: ^10.0.0
         version: 10.3.8(@nestjs/common@10.4.15)(@nestjs/core@10.3.8)
+      '@nestjs/typeorm':
+        specifier: ^11.0.0
+        version: 11.0.0(@nestjs/common@10.4.15)(@nestjs/core@10.3.8)(reflect-metadata@0.2.2)(rxjs@7.8.2)(typeorm@0.3.25)
       '@repo/api':
         specifier: workspace:*
         version: link:../../packages/api
+      dotenv:
+        specifier: ^17.2.1
+        version: 17.2.1
+      nanoid:
+        specifier: ^5.1.5
+        version: 5.1.5
       reflect-metadata:
         specifier: ^0.2.0
         version: 0.2.2
@@ -131,8 +152,8 @@ importers:
         specifier: ^10.0.0
         version: 10.3.2
       '@nestjs/schematics':
-        specifier: ^10.0.0
-        version: 10.1.1(typescript@5.5.4)
+        specifier: ^11.0.5
+        version: 11.0.5(typescript@5.5.4)
       '@nestjs/testing':
         specifier: ^10.0.0
         version: 10.3.8(@nestjs/common@10.4.15)(@nestjs/core@10.3.8)(@nestjs/platform-express@10.3.8)
@@ -299,6 +320,9 @@ importers:
 
   packages/api:
     dependencies:
+      '@nestjs/config':
+        specifier: ^4.0.2
+        version: 4.0.2(@nestjs/common@10.4.15)(rxjs@7.8.2)
       '@nestjs/mapped-types':
         specifier: '*'
         version: 2.0.5(@nestjs/common@10.4.15)(class-transformer@0.5.1)(class-validator@0.14.2)(reflect-metadata@0.2.2)
@@ -6765,7 +6789,14 @@ packages:
   /nanoid@3.3.7:
     resolution: {integrity: sha512-eSRppjcPIatRIMC1U6UngP8XFcz8MQWGQdt1MTBQ7NaAmvXDfvNxbvWV3x2y6CdEUciCSsDHDQZbhYaB8QEo2g==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
+    hasBin: true
     dev: true
+
+  /nanoid@5.1.5:
+    resolution: {integrity: sha512-Ir/+ZpE9fDsNH0hQ3C68uyThDXzYcim2EqcZ8zn8Chtt1iylPT9xXJB0kPCnqzgcEGikO9RxSrh63MsmVCU7Fw==}
+    engines: {node: ^18 || >=20}
+    hasBin: true
+    dev: false
 
   /natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
