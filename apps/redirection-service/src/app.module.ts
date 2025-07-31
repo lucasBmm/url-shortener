@@ -1,13 +1,16 @@
+import { ConfigModule } from '@nestjs/config';
 import { Module } from '@nestjs/common';
 
-import { LinksModule } from './links/links.module';
-
-import { AppService } from './app.service';
-import { AppController } from './app.controller';
+import { RedirectModule } from './redirect/redirect.module';
+import configuration from './config/configuration';
 
 @Module({
-  imports: [LinksModule],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      load: [configuration],
+    }),
+    RedirectModule,
+  ],
 })
 export class AppModule {}

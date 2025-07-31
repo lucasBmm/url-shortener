@@ -33,10 +33,7 @@ export class UrlController {
 
   @Post()
   @OptionalAuth()
-  async create(
-    @Body() dto: CreateUrlDto,
-    @Req() req: AuthRequest,
-  ) {
+  async create(@Body() dto: CreateUrlDto, @Req() req: AuthRequest) {
     const user = req?.user as { sub?: string } | undefined;
     const userId = user?.sub;
 
@@ -52,7 +49,7 @@ export class UrlController {
   async updateUrl(
     @Param('id') id: string,
     @Body() newUrl: CreateUrlDto,
-    @Req() req:  AuthRequest,
+    @Req() req: AuthRequest,
   ) {
     const user = req?.user as { sub?: string } | undefined;
     const userId = user?.sub;
@@ -61,10 +58,7 @@ export class UrlController {
   }
 
   @Delete(':id')
-  async deleteUrl(
-    @Param('id') id: string,
-    @Req() req: AuthRequest,
-  ) {
+  async deleteUrl(@Param('id') id: string, @Req() req: AuthRequest) {
     const user = req?.user as { sub?: string } | undefined;
     const userId = user?.sub;
 

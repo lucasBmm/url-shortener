@@ -71,10 +71,19 @@ export class CreateShortUrl1753908680529 implements MigrationInterface {
         columnNames: ['userId'],
       }),
     );
+
+    await queryRunner.createIndex(
+      'short_urls',
+      new TableIndex({
+        name: 'IDX_SHORT_URLS_SHORT_CODE',
+        columnNames: ['shortCode'],
+      }),
+    );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.dropIndex('short_urls', 'IDX_SHORT_URLS_USER_ID');
+    await queryRunner.dropIndex('short_urls', 'IDX_SHORT_URLS_SHORT_CODE');
     await queryRunner.dropTable('short_urls');
   }
 }

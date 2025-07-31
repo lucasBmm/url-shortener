@@ -1,4 +1,9 @@
-import { ForbiddenException, Inject, Injectable } from '@nestjs/common';
+import {
+  ForbiddenException,
+  Inject,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { IUrlRepository } from './url.repository.interface';
 import { CreateUrlDto } from './dto/create-url.dto';
 import { ShortUrl } from './entities/url.entity';
@@ -33,6 +38,10 @@ export class UrlService {
     return this.urlRepository.findAllByUser(userId);
   }
 
+  findByShortUrl(shortUrl: string): Promise<ShortUrl> {
+    return this.urlRepository.findByShortCode(shortUrl);
+  }
+
   async updateOriginalUrl(
     userId: string,
     urlId: string,
@@ -47,6 +56,18 @@ export class UrlService {
     }
 
     return this.urlRepository.updateOriginalUrl(urlId, newUrl);
+  }
+
+  async registerClick(shortCode: string, timestamp: number): Promise<void> {
+    const url = await this.urlRepository.findByShortCode(shortCode);
+
+    if (!url) {
+      throw new NotFoundException(`Short URL "${shortCode}" not found`);
+    }
+
+    const newCount = (url.clickCount ?? 0) + 1;
+
+    await this.urlRepository.update(url.id, { clickCount: newCount });
   }
 
   async deleteUrl(userId: string, urlId: string): Promise<void> {
