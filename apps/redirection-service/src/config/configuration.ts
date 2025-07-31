@@ -11,4 +11,6 @@ export default () => ({
     password: process.env.DATABASE_PASSWORD,
     dbName: process.env.DATABASE_NAME,
   },
+  redis_host: process.env.REDIS_HOST,
+  redis_port: process.env.REDIS_PORT,
 });
