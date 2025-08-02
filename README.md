@@ -56,6 +56,12 @@ All services, including KrakenD and MySQL, will start and connect properly.
 4. Start all services: `pnpm run dev`
 
 
+### 🧪 Tests
+
+Run tests in root folder with `pnpm run test`
+
+---
+
 Services will be available at:
 
 - Redirection Service: http://localhost:3000

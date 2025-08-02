@@ -45,6 +45,7 @@
     "@repo/typescript-config": "workspace:*",
     "@types/cache-manager-redis-store": "^3.0.0",
     "@types/express": "^4.17.17",
+    "@types/jest": "^30.0.0",
     "@types/node": "^20.3.1",
     "@types/supertest": "^6.0.0",
     "jest": "^29.7.0",

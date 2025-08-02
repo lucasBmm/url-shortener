@@ -3,12 +3,16 @@ import { config as baseConfig } from './base';
 
 export const config = {
   ...baseConfig,
-  rootDir: 'src',
+  rootDir: '.',
+  roots: ['<rootDir>/src'],
   testRegex: '.*\\.spec\\.ts$',
+  moduleNameMapper: {
+    '^src/(.*)$': '<rootDir>/src/$1',
+  },
   transform: {
-    '^.+\\.(t|j)s$': 'ts-jest',
+    '^.+\\.(ts|tsx)$': 'ts-jest',
   },
   collectCoverageFrom: ['**/*.(t|j)s'],
-  coverageDirectory: '../coverage',
+  coverageDirectory: 'coverage',
   testEnvironment: 'node',
 } as const satisfies Config;
