@@ -4,7 +4,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: url_shortner
-      MYSQL_USER: root
+      MYSQL_USER: url_shorter
       MYSQL_PASSWORD: 123456
     ports:
       - "3306:3306"

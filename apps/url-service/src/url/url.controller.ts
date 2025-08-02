@@ -28,7 +28,7 @@ export class UrlController {
     const user = req.user as { sub?: string } | undefined;
     const userId = user?.sub;
 
-    return this.urlService.findByUser(userId);
+    return { data: await this.urlService.findByUser(userId) };
   }
 
   @Post()

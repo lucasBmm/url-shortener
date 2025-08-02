@@ -8,9 +8,29 @@
   "extra_config": {
     "github_com/devopsfaith/krakend-cors": {
       "allow_origins": [],
-      "allow_methods": [ "POST", "GET", "DELETE", "PUT", "OPTIONS" ],
-      "allow_headers": ["Origin","Authorization","Content-Type", "Access-Control-Allow-Origin", "locale", "accept", "x-requested-with", "Cache-Control"],
-      "expose_headers": ["Content-Length", "Content-Type", "Cache-Control", "Authorization"],
+      "allow_methods": [
+        "POST",
+        "GET",
+        "DELETE",
+        "PUT",
+        "OPTIONS"
+      ],
+      "allow_headers": [
+        "Origin",
+        "Authorization",
+        "Content-Type",
+        "Access-Control-Allow-Origin",
+        "locale",
+        "accept",
+        "x-requested-with",
+        "Cache-Control"
+      ],
+      "expose_headers": [
+        "Content-Length",
+        "Content-Type",
+        "Cache-Control",
+        "Authorization"
+      ],
       "max_age": "12h",
       "allow_credentials": true
     },
@@ -24,7 +44,9 @@
       "method": "POST",
       "backend": [
         {
-          "host": ["http://user-management-service:3002"],
+          "host": [
+            "http://user-management-service:3002"
+          ],
           "url_pattern": "/auth",
           "extra_config": {
             "backend/http": {
@@ -39,7 +61,9 @@
       "method": "POST",
       "backend": [
         {
-          "host": ["http://user-management-service:3002"],
+          "host": [
+            "http://user-management-service:3002"
+          ],
           "url_pattern": "/auth/login"
         }
       ]
@@ -47,9 +71,15 @@
     {
       "endpoint": "/api/url",
       "method": "GET",
+      "input_headers": [
+        "Authorization"
+      ],
+      "encoding": "no-op",
       "backend": [
         {
-          "host": ["http://url-service:3001"],
+          "host": [
+            "http://url-service:3001"
+          ],
           "url_pattern": "/url"
         }
       ]
@@ -59,8 +89,14 @@
       "method": "POST",
       "extra_config": {
         "security/cors": {
-          "allow_methods": ["POST"],
-          "allow_headers": ["Origin", "Authorization", "Content-type"],
+          "allow_methods": [
+            "POST"
+          ],
+          "allow_headers": [
+            "Origin",
+            "Authorization",
+            "Content-type"
+          ],
           "max_age": "12h",
           "allow_credentials": false,
           "debug": true
@@ -68,7 +104,9 @@
       },
       "backend": [
         {
-          "host": ["http://url-service:3001"],
+          "host": [
+            "http://url-service:3001"
+          ],
           "url_pattern": "/url"
         }
       ]
@@ -78,7 +116,9 @@
       "method": "PATCH",
       "backend": [
         {
-          "host": ["http://url-service:3001"],
+          "host": [
+            "http://url-service:3001"
+          ],
           "url_pattern": "/url/{id}"
         }
       ]
@@ -88,7 +128,9 @@
       "method": "DELETE",
       "backend": [
         {
-          "host": ["http://url-service:3001"],
+          "host": [
+            "http://url-service:3001"
+          ],
           "url_pattern": "/url/{id}"
         }
       ]
@@ -98,7 +140,9 @@
       "method": "GET",
       "backend": [
         {
-          "host": ["http://redirect-service:3000"],
+          "host": [
+            "http://redirect-service:3000"
+          ],
           "url_pattern": "/redirect/{url}"
         }
       ]
