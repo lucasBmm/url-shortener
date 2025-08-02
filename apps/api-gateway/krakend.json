@@ -5,14 +5,42 @@
   "port": 8080,
   "timeout": "3s",
   "cache_ttl": "300s",
-  "extra_config": {},
+  "extra_config": {
+    "github_com/devopsfaith/krakend-cors": {
+      "allow_origins": [],
+      "allow_methods": [ "POST", "GET", "DELETE", "PUT", "OPTIONS" ],
+      "allow_headers": ["Origin","Authorization","Content-Type", "Access-Control-Allow-Origin", "locale", "accept", "x-requested-with", "Cache-Control"],
+      "expose_headers": ["Content-Length", "Content-Type", "Cache-Control", "Authorization"],
+      "max_age": "12h",
+      "allow_credentials": true
+    },
+    "router": {
+      "return_error_msg": true
+    }
+  },
   "endpoints": [
     {
       "endpoint": "/api/auth",
-      "method": "GET",
+      "method": "POST",
       "backend": [
         {
-          "host": ["http://localhost:3000"]
+          "host": ["http://user-management-service:3002"],
+          "url_pattern": "/auth",
+          "extra_config": {
+            "backend/http": {
+              "return_error_code": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/auth/login",
+      "method": "POST",
+      "backend": [
+        {
+          "host": ["http://user-management-service:3002"],
+          "url_pattern": "/auth/login"
         }
       ]
     },
@@ -21,16 +49,57 @@
       "method": "GET",
       "backend": [
         {
-          "host": ["http://localhost:3001"]
+          "host": ["http://url-service:3001"],
+          "url_pattern": "/url"
         }
       ]
     },
     {
-      "endpoint": "/api/redirect",
+      "endpoint": "/api/url",
+      "method": "POST",
+      "extra_config": {
+        "security/cors": {
+          "allow_methods": ["POST"],
+          "allow_headers": ["Origin", "Authorization", "Content-type"],
+          "max_age": "12h",
+          "allow_credentials": false,
+          "debug": true
+        }
+      },
+      "backend": [
+        {
+          "host": ["http://url-service:3001"],
+          "url_pattern": "/url"
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/url/{id}",
+      "method": "PATCH",
+      "backend": [
+        {
+          "host": ["http://url-service:3001"],
+          "url_pattern": "/url/{id}"
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/url/{id}",
+      "method": "DELETE",
+      "backend": [
+        {
+          "host": ["http://url-service:3001"],
+          "url_pattern": "/url/{id}"
+        }
+      ]
+    },
+    {
+      "endpoint": "/api/redirect/{url}",
       "method": "GET",
       "backend": [
         {
-          "host": ["http://localhost:3002"]
+          "host": ["http://redirect-service:3000"],
+          "url_pattern": "/redirect/{url}"
         }
       ]
     }

@@ -1,0 +1,88 @@
+services:
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: url_shortner
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 123456
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  redirect-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE: redirection-service
+    image: redirect-service:latest
+    restart: on-failure
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./apps/redirection-service/.env
+    depends_on:
+      - rabbitmq
+      - redis
+
+  url-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE: url-service
+    image: url-service:latest
+    restart: on-failure
+    ports:
+      - "3001:3001"
+    env_file:
+      - ./apps/url-service/.env
+    depends_on:
+      - rabbitmq
+      - redis
+
+  user-management-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE: user-management-service
+    image: user-management-service:latest
+    restart: on-failure
+    ports:
+      - "3002:3002"
+    env_file:
+      - ./apps/user-management-service/.env
+    depends_on:
+      - rabbitmq
+      - redis
+
+  krakend:
+    image: krakend
+    volumes:
+      - ./apps/api-gateway:/etc/krakend
+    command: ["run", "-c", "krakend.json"]
+    ports:
+      - "8080:8080"
+    depends_on:
+      - redirect-service
+      - url-service
+      - user-management-service
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
+volumes:
+  mysql-data:
