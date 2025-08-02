@@ -64,7 +64,12 @@
           "host": [
             "http://user-management-service:3002"
           ],
-          "url_pattern": "/auth/login"
+          "url_pattern": "/auth/login",
+          "extra_config": {
+            "backend/http": {
+              "return_error_code": true
+            }
+          }
         }
       ]
     },
@@ -80,7 +85,12 @@
           "host": [
             "http://url-service:3001"
           ],
-          "url_pattern": "/url"
+          "url_pattern": "/url",
+          "extra_config": {
+            "backend/http": {
+              "return_error_code": true
+            }
+          }
         }
       ]
     },
@@ -107,7 +117,12 @@
           "host": [
             "http://url-service:3001"
           ],
-          "url_pattern": "/url"
+          "url_pattern": "/url",
+          "extra_config": {
+            "backend/http": {
+              "return_error_code": true
+            }
+          }
         }
       ]
     },
@@ -119,7 +134,12 @@
           "host": [
             "http://url-service:3001"
           ],
-          "url_pattern": "/url/{id}"
+          "url_pattern": "/url/{id}",
+          "extra_config": {
+            "backend/http": {
+              "return_error_code": true
+            }
+          }
         }
       ]
     },
@@ -131,19 +151,40 @@
           "host": [
             "http://url-service:3001"
           ],
-          "url_pattern": "/url/{id}"
+          "url_pattern": "/url/{id}",
+          "extra_config": {
+            "backend/http": {
+              "return_error_code": true
+            }
+          }
         }
       ]
     },
     {
       "endpoint": "/api/redirect/{url}",
       "method": "GET",
+      "output_encoding": "no-op",
+       "extra_config": {
+        "github.com/devopsfaith/krakend-cors": {
+          "allow_origins": ["*"],
+          "expose_headers": ["Location"]
+        }
+      },
       "backend": [
         {
           "host": [
             "http://redirect-service:3000"
           ],
-          "url_pattern": "/redirect/{url}"
+          "url_pattern": "/redirect/{url}",
+          "encoding": "no-op",
+           "extra_config": {
+            "backend/http": {
+              "return_error_code": true
+            },
+            "backend/http/client": {
+              "no_redirect": true
+            }
+          }
         }
       ]
     }
