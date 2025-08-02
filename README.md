@@ -1,120 +1,139 @@
-# Turborepo starter
+# URL Shortener – Backend API
 
-This is a community-maintained example. If you experience a problem, please submit a pull request with a fix. GitHub Issues will be closed.
+A complete microservices-based URL shortening platform built with **NestJS**, **TypeScript**, **MySQL**, **Redis**, **RabbitMQ**, and **KrakenD** as the API Gateway.
 
-## Using this example
+---
 
-Run the following command:
+## 🧩 Project Overview
 
-```bash
-npx create-turbo@latest -e with-nestjs
-```
+This project is designed to demonstrate backend architecture using modern technologies and good practices. It allows users to register, log in, shorten URLs, manage their links, and track how many times each shortened URL was accessed.
 
-## What's inside?
+The codebase is modular, organized in a **monorepo** using `pnpm` workspaces, and follows a **microservices architecture**.
 
-This Turborepo includes the following packages/apps:
+---
 
-### Apps and Packages
+## 🧱 Architecture
 
-    .
-    ├── apps
-    │   ├── api                       # NestJS app (https://nestjs.com).
-    │   └── web                       # Next.js app (https://nextjs.org).
-    └── packages
-        ├── @repo/api                 # Shared `NestJS` resources.
-        ├── @repo/eslint-config       # `eslint` configurations (includes `prettier`)
-        ├── @repo/jest-config         # `jest` configurations
-        ├── @repo/typescript-config   # `tsconfig.json`s used throughout the monorepo
-        └── @repo/ui                  # Shareable stub React component library.
+![A drawing of the system design](system-design.png)
 
-Each package and application are 100% [TypeScript](https://www.typescriptlang.org/) safe.
+- **User Management Service** – Handles user registration, authentication, and JWT token management.
+- **URL Service** – Stores, edits, deletes, and tracks clicks for shortened URLs.
+- **Redirection Service** – Redirects users to the original URL and emits events to update click counts.
+- **KrakenD API Gateway** – Routes external HTTP requests to the appropriate microservice.
+- **RabbitMQ** – Facilitates async communication between services.
+- **Redis** – Used for caching (more configuration for future scalability).
 
-### Utilities
+> **Note:** For simplicity, all services currently use the same MySQL database. In a real-world system, each service would use its own isolated database for better separation of concerns, scalability, and fault tolerance.
 
-This `Turborepo` has some additional tools already set for you:
+---
 
-- [TypeScript](https://www.typescriptlang.org/) for static type-safety
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-- [Jest](https://prettier.io) & [Playwright](https://playwright.dev/) for testing
+## 🧪 Local Setup
 
-### Commands
+You can run this project using **Docker** (recommended) or locally via **pnpm**.
 
-This `Turborepo` already configured useful commands for all your apps and packages.
+### ✅ Option 1: Docker (Recommended)
 
-#### Build
+1. Ensure Docker is installed and running.
+2. Create `.env` files in:
+   - `url-service`
+   - `user-management-service`
+   - `redirection-service`
+   
+   Use the `.env.example` files as a base. Default values are already configured to run locally.
+3. From the project root, run: `docker-compose up`
 
-```bash
-# Will build all the app & packages with the supported `build` script.
-pnpm run build
+All services, including KrakenD and MySQL, will start and connect properly.
 
-# ℹ️ If you plan to only build apps individually,
-# Please make sure you've built the packages first.
-```
+---
 
-#### Develop
+### 🛠️ Option 2: Local Development
 
-```bash
-# Will run the development server for all the app & packages with the supported `dev` script.
-pnpm run dev
-```
+> ⚠️ You must have a local MySQL and RabbitMQ instance running. Services will not start correctly without valid `.env` configuration.
 
-#### test
+1. Install Node.js (version 18+)
+2. Install `pnpm` globally: `npm install -g pnpm`
+3. Install dependencies: `pnpm install`
+4. Start all services: `pnpm run dev`
 
-```bash
-# Will launch a test suites for all the app & packages with the supported `test` script.
-pnpm run test
 
-# You can launch e2e testes with `test:e2e`
-pnpm run test:e2e
+Services will be available at:
 
-# See `@repo/jest-config` to customize the behavior.
-```
+- Redirection Service: http://localhost:3000
+- URL Service: http://localhost:3001
+- User Management Service: http://localhost:3002
 
-#### Lint
+> Note: The KrakenD API Gateway is not started via `pnpm` and must be run with Docker.
 
-```bash
-# Will lint all the app & packages with the supported `lint` script.
-# See `@repo/eslint-config` to customize the behavior.
-pnpm run lint
-```
+---
 
-#### Format
+## 📦 Tech Stack
 
-```bash
-# Will format all the supported `.ts,.js,json,.tsx,.jsx` files.
-# See `@repo/eslint-config/prettier-base.js` to customize the behavior.
-pnpm format
-```
+- **NestJS** – Server framework
+- **TypeScript** – Primary language
+- **MySQL** – Relational database
+- **Redis** – Caching and key-value store
+- **RabbitMQ** – Message broker
+- **KrakenD** – API Gateway
+- **Docker** – Container management
+- **pnpm** – Package and monorepo manager
+- **Turborepo** – For orchestration of multiple projects
 
-### Remote Caching
+---
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+## 📁 Insomnia Workspace
 
-Turborepo can use a technique known as [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+To simplify API testing, an [Insomnia](https://insomnia.rest) export file is included:  
+**`url-shortener-insomnia-pack.json`**
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
+### To use:
 
-```bash
-npx turbo login
-```
+1. Open Insomnia.
+2. Click `Import Data` → `From File`.
+3. Select the JSON file and start testing the endpoints.
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+---
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+## ⚠️ Simplifications and Dev-Only Configurations
 
-```bash
-npx turbo link
-```
+- All microservices share a single database instance. This is **only for demo and testing purposes**. In production, **each service should have its own isolated database**.
 
-## Useful Links
+- No load balancer (e.g., NGINX or Kubernetes Ingress) is used in this local setup. This was omitted to keep local development simple, but in a real-world environment, a **load balancer would be required** for horizontal scaling and failover.
 
-Learn more about the power of Turborepo:
+- **Automatic database synchronization (`synchronize: true`)** is enabled in the TypeORM config.  This is strictly for **local testing only**. In production, **migrations should always be used** (and they already created in `src/db/migrations` folder) and schema syncing must be disabled.
 
-- [Tasks](https://turborepo.com/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.com/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.com/docs/reference/configuration)
-- [CLI Usage](https://turborepo.com/docs/reference/command-line-reference)
+---
+
+## 🔮 Future Improvements & Scalability Challenges
+
+If this system needs to scale horizontally, here are some recommendations and anticipated challenges:
+
+### ✅ Improvements to Prepare for Horizontal Scaling:
+
+- **Separate databases per service** to enforce clear data ownership and facilitate replication/sharding.
+- **Use Kubernetes** to orchestrate containers and implement automatic scaling, health checks, and zero-downtime deployments.
+- **Rate limiting** at the gateway level to prevent abuse.
+- **Scale the Redirection Service horizontally**, as it is expected to handle the highest volume of traffic. It should have the highest number of replicas and benefit from **aggressive caching strategies** (e.g., Redis).
+- **Introduce a read replica for the URL Service database**, allowing the Redirection Service to perform read operations without impacting the primary database. This reduces load and improves latency. Additionally, ensure that the database maintains indexes on the `short_url` field at all times to guarantee fast lookups under high traffic.
+
+### ⚠️ Scalability Challenges:
+
+- **Message queue bottlenecks:** RabbitMQ must be monitored and potentially scaled for high click traffic.
+- **Eventual consistency:** With more services, syncing data asynchronously can lead to consistency issues.
+- **Database contention:** Without sharding, read replicas or proper indexes, the MySQL database could become a bottleneck.
+- **Service-to-service latency:** Adding more services introduces more hops and potential failures, requiring retries and timeouts.
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License.
+
+---
+
+## 👨‍💻 Author
+
+**Lucas Bomfim Mujo de Mattos**  
+Full Stack Developer  
+[LinkedIn](https://www.linkedin.com/in/lucasbommattos)  
+
+
