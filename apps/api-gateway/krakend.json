@@ -97,21 +97,10 @@
     {
       "endpoint": "/api/url",
       "method": "POST",
-      "extra_config": {
-        "security/cors": {
-          "allow_methods": [
-            "POST"
-          ],
-          "allow_headers": [
-            "Origin",
-            "Authorization",
-            "Content-type"
-          ],
-          "max_age": "12h",
-          "allow_credentials": false,
-          "debug": true
-        }
-      },
+      "input_headers": [
+        "Authorization",
+        "Content-Type"
+      ],
       "backend": [
         {
           "host": [

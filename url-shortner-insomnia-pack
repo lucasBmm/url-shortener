@@ -1,1 +1,235 @@
-{"_type":"export","__export_format":4,"__export_date":"2025-08-02T21:55:32.691Z","__export_source":"insomnia.desktop.app:v10.0.0","resources":[{"_id":"req_2229ffa2c9c145f4acea29341b4125a7","parentId":"wrk_scratchpad","modified":1754170468637,"created":1753971878177,"url":"http://localhost:8080/api/redirect/yJ0DaB","name":"Redirect to full url","description":"","method":"GET","body":{},"parameters":[],"headers":[{"name":"User-Agent","value":"insomnia/10.0.0"}],"authentication":{},"metaSortKey":-1753971878177,"isPrivate":false,"pathParameters":[],"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"wrk_scratchpad","parentId":null,"modified":1725921768763,"created":1725921768763,"name":"Scratch Pad","description":"","scope":"collection","_type":"workspace"},{"_id":"req_4ddf797dda4e4ea59f5816cd6068c638","parentId":"wrk_scratchpad","modified":1754102688370,"created":1753916868043,"url":"http://localhost:3001/url/56cc2f84-ab9d-4a86-9661-beb1376bdee2","name":"Delete url","description":"","method":"DELETE","body":{},"parameters":[],"headers":[{"name":"User-Agent","value":"insomnia/10.0.0"}],"authentication":{"type":"bearer","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ODQ4MGFmNS1jMTBlLTRmZDYtOTkxOS0yZTBjMTBmNjQ0NjIiLCJlbWFpbCI6Imx1Y2FzMkBlbWFpbC5jb20iLCJpYXQiOjE3NTQxMDI2MjEsImV4cCI6MTc1NDEwNjIyMX0.ldOV_yzBBjmJdouo6dN43lA7J-ggq0_VElbLLajnFak","prefix":"Bearer "},"metaSortKey":-1753916868043,"isPrivate":false,"pathParameters":[],"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_2ba876518ae440fe941a6c91f6ac530c","parentId":"wrk_scratchpad","modified":1754108234474,"created":1753915135473,"url":"http://localhost:3001/url/b9ac47eb-59ed-4eae-8e83-e236f8d6ee06","name":"Update url","description":"","method":"PATCH","body":{"mimeType":"application/json","text":"{\n\t\"originalUrl\": \"https://www.google.com.br\"\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json"},{"name":"User-Agent","value":"insomnia/10.0.0"}],"authentication":{"type":"bearer","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ODQ4MGFmNS1jMTBlLTRmZDYtOTkxOS0yZTBjMTBmNjQ0NjIiLCJlbWFpbCI6Imx1Y2FzMkBlbWFpbC5jb20iLCJpYXQiOjE3NTQxMDgxMzIsImV4cCI6MTc1NDExMTczMn0.ygdGhUuLL-u1dRScM6TksoNDB8YVQjIF4wqMqy9bi0M","prefix":"Bearer "},"metaSortKey":-1753915135473,"isPrivate":false,"pathParameters":[],"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_06b8f1009e18483884c96a5a9cddf3d6","parentId":"wrk_scratchpad","modified":1754170461392,"created":1753915030982,"url":"http://localhost:8080/api/url","name":"List url by user","description":"","method":"GET","body":{},"parameters":[],"headers":[{"name":"User-Agent","value":"insomnia/10.0.0"}],"authentication":{"type":"bearer","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjZjU4Y2ZlZC0zYzg1LTQ3YzgtOGZiNi0yN2QzYThkYWI5NDEiLCJlbWFpbCI6Imx1Y2FzMUBlbWFpbC5jb20iLCJpYXQiOjE3NTQxNzA0NDgsImV4cCI6MTc1NDE3NDA0OH0.ePi0SlBYW5JSxy9rcSCfBYRuz0p5WUrNnqfXixqHHeA","prefix":"Bearer "},"metaSortKey":-1753915030982,"isPrivate":false,"pathParameters":[],"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_53b682816ecf4d69b05337390df64db1","parentId":"wrk_scratchpad","modified":1754168636569,"created":1753908029935,"url":"http://localhost:3001/url","name":"Create url","description":"","method":"POST","body":{"mimeType":"application/json","text":"{\n\t\"originalUrl\": \"https://www.google.com\"\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_3e5348c1d1ac4d90af639a5cad9104c9"},{"name":"User-Agent","value":"insomnia/10.0.0","id":"pair_a7fb234610fd4bc182cd684da58847d3"}],"authentication":{"type":"bearer","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjZjU4Y2ZlZC0zYzg1LTQ3YzgtOGZiNi0yN2QzYThkYWI5NDEiLCJlbWFpbCI6Imx1Y2FzMUBlbWFpbC5jb20iLCJpYXQiOjE3NTQxNjg2MzAsImV4cCI6MTc1NDE3MjIzMH0.G9wbECmuV0rcDu2z3BVcdlPM4Gu3JOALj3kjKcZJ09w","prefix":"Bearer ","disabled":false},"metaSortKey":-1753908029935,"isPrivate":false,"pathParameters":[],"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_06856fcc09884aa692cdadebab4bb342","parentId":"wrk_scratchpad","modified":1754141431540,"created":1753896742486,"url":"http://localhost:8080/api/auth/login","name":"Login User","description":"","method":"POST","body":{"mimeType":"application/json","text":"{\n\t\"email\": \"lucas1@email.com\",\n\t\"password\": \"123456\"\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json"},{"name":"User-Agent","value":"insomnia/10.0.0"}],"authentication":{},"metaSortKey":-1753896742486,"isPrivate":false,"pathParameters":[],"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_f51e401c966c4523bcafc4f851b6bdec","parentId":"wrk_scratchpad","modified":1754102612764,"created":1751662674648,"url":"http://localhost:8080/api/auth","name":"Create user","description":"","method":"POST","body":{"mimeType":"application/json","text":"{\n\t\"name\": \"lucas\",\n\t\"email\": \"lucas1@email.com\",\n\t\"password\": \"123456\"\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json"},{"name":"User-Agent","value":"insomnia/10.0.0"}],"authentication":{"type":"bearer","token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MTEwMSwibmJmIjoxNzUxNjM4MDMzLCJleHAiOjE3NTE3MjQ0MzN9.ldpdRbCoM4aj5pXTeLRMb57N94tqU9sq2B4Hh32u_DU","disabled":true},"metaSortKey":-1751662674648,"isPrivate":false,"pathParameters":[],"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"env_99d30891da4bdcebc63947a8fc17f076de878684","parentId":"wrk_scratchpad","modified":1725921774680,"created":1725921774680,"name":"Base Environment","data":{},"dataPropertyOrder":null,"color":null,"isPrivate":false,"metaSortKey":1725921774680,"_type":"environment"},{"_id":"jar_99d30891da4bdcebc63947a8fc17f076de878684","parentId":"wrk_scratchpad","modified":1725921774769,"created":1725921774769,"name":"Default Jar","cookies":[],"_type":"cookie_jar"}]}
+type: collection.insomnia.rest/5.0
+name: Url Shortner endpoints
+meta:
+  id: wrk_5e55c0a16c854510b5eb71e6dc083789
+  created: 1754239221216
+  modified: 1754242517246
+  description: ""
+collection:
+  - url: http://localhost:8080/api/auth
+    name: Create user
+    meta:
+      id: req_8c1e1a0e91b744adb2a4af06755348b3
+      created: 1751662674648
+      modified: 1754242437706
+      isPrivate: false
+      description: ""
+      sortKey: -1751662674648
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "teste",
+        	"email": "teste@email.com",
+        	"password": "123456"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/10.0.0
+    authentication:
+      type: bearer
+      token: ""
+      disabled: true
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/api/auth/login
+    name: Login User
+    meta:
+      id: req_87f2fea702204fdd924121b819d31225
+      created: 1753896742486
+      modified: 1754242449398
+      isPrivate: false
+      description: ""
+      sortKey: -1753896742486
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"email": "teste@email.com",
+        	"password": "123456"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/10.0.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/api/url
+    name: Create url
+    meta:
+      id: req_6c4a914b7ab64fd68b354ae41f6cd7be
+      created: 1753908029935
+      modified: 1754242466435
+      isPrivate: false
+      description: ""
+      sortKey: -1753908029935
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"originalUrl": "https://www.google.com.br"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_3e5348c1d1ac4d90af639a5cad9104c9
+      - name: User-Agent
+        value: insomnia/10.0.0
+        id: pair_a7fb234610fd4bc182cd684da58847d3
+    authentication:
+      type: bearer
+      token: ""
+      prefix: "Bearer "
+      disabled: true
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/api/url
+    name: List url by user
+    meta:
+      id: req_6b72fd734a164bca9b5d0c87fd835b0e
+      created: 1753915030982
+      modified: 1754242470245
+      isPrivate: false
+      description: ""
+      sortKey: -1753915030982
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/10.0.0
+    authentication:
+      type: bearer
+      token: ""
+      prefix: "Bearer "
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/api/:id
+    name: Update url
+    meta:
+      id: req_5849237bed4546a69700946b247be643
+      created: 1753915135473
+      modified: 1754242486491
+      isPrivate: false
+      description: ""
+      sortKey: -1753915135473
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"originalUrl": "https://www.google.com.br"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/10.0.0
+    authentication:
+      type: bearer
+      token: ""
+      prefix: "Bearer "
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    pathParameters:
+      - name: id
+        value: ""
+  - url: http://localhost:8080/api/:id
+    name: Delete url
+    meta:
+      id: req_0c1a40c3ffd74f7facf2f8721988f1e7
+      created: 1753916868043
+      modified: 1754242492100
+      isPrivate: false
+      description: ""
+      sortKey: -1753916868043
+    method: DELETE
+    headers:
+      - name: User-Agent
+        value: insomnia/10.0.0
+    authentication:
+      type: bearer
+      token: ""
+      prefix: "Bearer "
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    pathParameters:
+      - name: id
+        value: ""
+  - url: http://localhost:8080/api/redirect/:shorturl
+    name: Redirect to full url
+    meta:
+      id: req_436af26eb4ee4883b5f7178c8121d6e0
+      created: 1753971878177
+      modified: 1754242502226
+      isPrivate: false
+      description: ""
+      sortKey: -1753971878177
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/10.0.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    pathParameters:
+      - name: shorturl
+        value: ""
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_0b4165c2af3c4a86b78131054b7fc2bf
+    created: 1725921774769
+    modified: 1725921774769
+environments:
+  name: Base Environment
+  meta:
+    id: env_6df587b75bff4b01b3e3678070ea52f8
+    created: 1725921774680
+    modified: 1725921774680
+    isPrivate: false
